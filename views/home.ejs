@@ -1,0 +1,32 @@
+<%-include("partials/header");-%>
+<div class="search-bar">
+            <form class="form-group" action="/home" method="post">
+              <input type="text" placeholder="Search your blog here..." name="blogTitle">
+              <button type="submit">Search</button>
+            </form>
+
+        </div>
+<h1>Welcome to Your Daily Journal</h1>
+<h2>Explore, Reflect, and Inspire</h2>
+<h3> <%= homeContent %></h3>
+<% allPosts.forEach(function(ele){ %>
+  <h1><%=ele.title %>  <button class="btn btn-danger remove" id=<%=ele.title%>>x</button></h1>
+
+  <h4><%=ele.content.substring(0,100) + "..."%>   <a href="/posts/'<%=ele.title %>'">Read More</a></h4>
+
+<%});%>
+<!-- <script>
+  document.querySelector('.remove').addEventListener('click', (e)=>{
+    let id=e.target.id;
+    console.log(id);
+    for(let i=0;i<allPosts.length;i++){
+      if(allPosts[i].title===id){
+        allPosts.splice(i,1);
+      }
+    }
+    console.log(allPosts);
+    });
+
+</script> -->
+
+<%- include("partials/footer"); -%>
